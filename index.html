@@ -695,6 +695,22 @@
             .btn-outline {
                 margin-left: 0;
             }
+
+            .track-link {
+    text-decoration: none; /* remove underline */
+    color: white;          /* force font to white */
+    display: block;        /* makes entire block clickable */
+}
+
+.track-link .track {
+    color: white; /* ensures all children inherit white */
+}
+
+.track-link:hover {
+    cursor: pointer; /* pointer on hover */
+    opacity: 0.8;    /* optional: subtle hover effect */
+}
+
         }
     </style>
 </head>
@@ -766,62 +782,87 @@
                 <div class="player-header">
                     <h3 class="player-title">Latest Mix</h3>
                     <div class="player-actions">
-                        <button class="control-btn"><i class="fas fa-heart"></i></button>
-                        <button class="control-btn"><i class="fas fa-download"></i></button>
+                        <button class="control-btn" onclick="window.location.href='https://soundcloud.com/lividus-dj'"><i class="fas fa-heart"></i></button>
+                        <button class="control-btn" onclick="window.location.href='https://soundcloud.com/lividus-dj'"><i class="fas fa-download"></i></button>
                     </div>
                 </div>
                 <div class="track-list">
-                   <div class="track">
-                        <div class="track-info">
-                            <span class="track-number">01</span>
-                            <span class="track-name">DJ Lividus. demo unreleased</span>
-                        </div>
-                        <span class="track-duration">Deep House</span>
-                    </div>
-                    <div class="track">
-                        <div class="track-info">
-                            <span class="track-number">02</span>
-                            <span class="track-name">DJ Lividus Deep house session 2</span>
-                        </div>
-                        <span class="track-duration">Deep House</span>
-                    </div>
-                    <div class="track">
-                        <div class="track-info">
-                            <span class="track-number">03</span>
-                            <span class="track-name">Edm mix</span>
-                        </div>
-                        <span class="track-duration">House</span>
-                    </div>
-                     <div class="track">
-                        <div class="track-info">
-                            <span class="track-number">04</span>
-                            <span class="track-name">DJ Lividus. techno house.</span>
-                        </div>
-                        <span class="track-duration">Techno</span>
-                    </div>
-                     <div class="track">
-                        <div class="track-info">
-                            <span class="track-number">05</span>
-                            <span class="track-name">DJ Lividus.deephouse 012022 - 01 - 06 17h09m08</span>
-                        </div>
-                        <span class="track-duration">Deep House</span>
-                    </div>
-                     <div class="track">
-                        <div class="track-info">
-                            <span class="track-number">06</span>
-                            <span class="track-name">DJ Lividus.welcome Mix</span>
-                        </div>
-                        <span class="track-duration">Techno</span>
-                    </div>
+                   <a href="https://soundcloud.com/lividus-dj/deephpuse-1?utm_source=clipboard&utm_medium=text&utm_campaign=social_sharing" 
+   target="_blank" 
+   class="track-link">
+    <div class="track">
+        <div class="track-info">
+            <span class="track-number">01</span>
+            <span class="track-name">Deep House</span>
+        </div>
+        <span class="track-duration">DJ Lividus</span>
+    </div>
+</a>
+
+                    <a href="https://soundcloud.com/lividus-dj/r-b-mix?utm_source=clipboard&utm_medium=text&utm_campaign=social_sharing" 
+   target="_blank" 
+   class="track-link">
+    <div class="track">
+        <div class="track-info">
+            <span class="track-number">02</span>
+            <span class="track-name">R&B Mix</span>
+        </div>
+        <span class="track-duration">DJ Lividus</span>
+    </div>
+</a>
+                    <a href="https://soundcloud.com/lividus-dj/amapiano-mix-lividus-uncut?utm_source=clipboard&utm_medium=text&utm_campaign=social_sharing" 
+   target="_blank" 
+   class="track-link">
+    <div class="track">
+        <div class="track-info">
+            <span class="track-number">03</span>
+            <span class="track-name">Amapiano Mix Lividus Uncut</span>
+        </div>
+        <span class="track-duration">DJ Lividus</span>
+    </div>
+</a>
+                     <a href="" 
+   target="_blank" 
+   class="track-link">
+    <div class="track">
+        <div class="track-info">
+            <span class="track-number">04</span>
+            <span class="track-name">Deephouse Intro</span>
+        </div>
+        <span class="track-duration">DJ Lividus</span>
+    </div>
+</a>
+                     <a href="https://soundcloud.com/lividus-dj" 
+   target="_blank" 
+   class="track-link">
+    <div class="track">
+        <div class="track-info">
+            <span class="track-number">05</span>
+            <span class="track-name">..</span>
+        </div>
+        <span class="track-duration">DJ Lividus</span>
+    </div>
+</a>
+                     <a href="https://soundcloud.com/lividus-dj" 
+   target="_blank" 
+   class="track-link">
+    <div class="track">
+        <div class="track-info">
+            <span class="track-number">06</span>
+            <span class="track-name">..</span>
+        </div>
+        <span class="track-duration">DJ Lividus</span>
+    </div>
+</a>
                 </div>
                 <div class="player-controls">
-                    <button class="control-btn" onclick="window.location.href='https://soundcloud.com/user-315529203'"><i class="fas fa-step-backward"></i></button>
-<button class="control-btn play-btn" onclick="window.location.href='https://soundcloud.com/user-315529203'"><i class="fas fa-play"></i></button>
-<button class="control-btn" onclick="window.location.href='https://soundcloud.com/user-315529203'"><i class="fas fa-step-forward"></i></button>
+                    <button class="control-btn" onclick="window.location.href='https://soundcloud.com/lividus-dj'"><i class="fas fa-step-backward"></i></button>
+<button class="control-btn play-btn" onclick="window.location.href='https://soundcloud.com/lividus-dj'"><i class="fas fa-play"></i></button>
+<button class="control-btn" onclick="window.location.href='https://soundcloud.com/lividus-dj'"><i class="fas fa-step-forward"></i></button>
                 </div>
             </div>
             <div style="text-align: center;">
-                <a href="#" class="btn">More Mixes</a>
+                <a href="https://soundcloud.com/lividus-dj" class="btn">More Mixes</a>
             </div>
         </div>
     </section>
@@ -833,35 +874,35 @@
             <div class="events-grid">
                 <div class="event-card">
                     <div class="event-image">
-                        <img src="https://images.unsplash.com/photo-1540039155733-5bb30b53aa14?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Club Night">
+                        <img src="1.jpeg" alt="Club Night">
                     </div>
                     <div class="event-details">
-                        <div class="event-date">June 15, 2023 | 10:00 PM</div>
-                        <h3 class="event-name">Friday Night Vibes</h3>
+                        <div class="event-date">Halloween</div>
+                        <h3 class="event-name">Friday 31 Oct</h3>
                         <div class="event-location">
                             <i class="fas fa-map-marker-alt"></i>
-                            <span>Club Elevate, New York</span>
+                            <span>Limited FREE Entry</span>
                         </div>
                         <a href="#" class="btn">Get Tickets</a>
                     </div>
                 </div>
                 <div class="event-card">
                     <div class="event-image">
-                        <img src="1.jpeg" alt="Summer Festival">
+                        <img src="2.jpeg" alt="Summer Festival">
                     </div>
                     <div class="event-details">
-                        <div class="event-date">July 22, 2023 | 4:00 PM</div>
-                        <h3 class="event-name">Sunset Music Festival</h3>
+                        <div class="event-date">December Fun</div>
+                        <h3 class="event-name">Village Tavern</h3>
                         <div class="event-location">
                             <i class="fas fa-map-marker-alt"></i>
-                            <span>Riverside Park, Chicago</span>
+                            <span>from 8PM</span>
                         </div>
                         <a href="#" class="btn">Get Tickets</a>
                     </div>
                 </div>
                 <div class="event-card">
                     <div class="event-image">
-                        <img src="https://images.unsplash.com/photo-1511795409834-ef04bbd61622?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Private Event">
+                        <img src="1.jpeg" alt="Private Event">
                     </div>
                     <div class="event-details">
                         <div class="event-date">August 5, 2023 | 7:00 PM</div>
