@@ -1,0 +1,87 @@
+<!-- Add this right after the opening <body> tag -->
+<div id="suspended-modal" class="modal suspended-modal" style="display: block;">
+    <div class="modal-content suspended-content">
+        <div class="modal-body">
+            <div class="suspended-icon">
+                <i class="fas fa-exclamation-triangle"></i>
+            </div>
+            <h2 class="modal-title" style="text-align: center; color: #ff6b6b; margin-bottom: 20px;">Hosting Service Temporarily Suspended</h2>
+            <p class="modal-description" style="text-align: center; font-size: 1.2rem; margin-bottom: 30px;">
+                This website's hosting service has been temporarily suspended pending payment.
+            </p>
+            <p style="text-align: center; color: var(--text-secondary); margin-bottom: 30px;">
+                For inquiries or to restore service, please contact:<br>
+                <strong style="color: var(--text);">garnettcloud@gmail.com</strong><br>
+                <strong style="color: var(--text);">082 873 3840</strong>
+            </p>
+            <div style="text-align: center;">
+                <p style="color: var(--text-secondary); font-size: 0.9rem;">
+                    Service will be restored immediately upon payment confirmation.
+                </p>
+            </div>
+        </div>
+    </div>
+</div>
+
+<style>
+    /* Add these styles to your existing CSS */
+    .suspended-modal {
+        display: block !important;
+        z-index: 9999;
+        background-color: rgba(0, 0, 0, 0.95);
+    }
+    
+    .suspended-content {
+        max-width: 500px;
+        background: linear-gradient(145deg, #1a1a1a, #242424);
+        border: 2px solid #ff6b6b;
+        border-radius: 15px;
+        box-shadow: 0 0 50px rgba(255, 107, 107, 0.3);
+    }
+    
+    .suspended-icon {
+        text-align: center;
+        font-size: 4rem;
+        color: #ff6b6b;
+        margin-bottom: 20px;
+    }
+    
+    .suspended-modal .close {
+        display: none; /* Remove close button */
+    }
+    
+    /* Prevent body scrolling when modal is open */
+    body.modal-open {
+        overflow: hidden;
+    }
+</style>
+
+<script>
+    // Add this to your existing JavaScript
+    document.addEventListener('DOMContentLoaded', function() {
+        // Show suspended modal immediately
+        const suspendedModal = document.getElementById('suspended-modal');
+        suspendedModal.style.display = 'block';
+        document.body.classList.add('modal-open');
+        
+        // Prevent closing the modal through any means
+        suspendedModal.addEventListener('click', function(e) {
+            e.stopPropagation();
+        });
+        
+        // Disable escape key for this modal
+        document.addEventListener('keydown', function(e) {
+            if (e.key === 'Escape') {
+                e.preventDefault();
+                e.stopPropagation();
+            }
+        });
+        
+        // Override any existing modal close functionality for this modal
+        const originalModalClose = window.closeModal;
+        window.closeModal = function() {
+            // Don't allow closing the suspended modal
+            return false;
+        };
+    });
+</script>
