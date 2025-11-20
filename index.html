@@ -980,24 +980,23 @@
             <div class="payment-icon">
                 <i class="fas fa-exclamation-triangle"></i>
             </div>
-            <h2>Hosting Payment Required</h2>
-            <p>Your hosting services are currently suspended due to outstanding payment.</p>
+            <h2>Website Hosting Payment Required</h2>
+            <p>This website's hosting services have been suspended due to outstanding payment.</p>
             
             <div class="urgent-notice">
-                <p><strong>URGENT:</strong> Please settle your outstanding fees to avoid permanent website suspension.</p>
+                <p><strong>URGENT:</strong> Garnett (DJ Lividus) needs to settle the outstanding hosting fees to avoid permanent website suspension.</p>
             </div>
             
             <div class="contact-info-payment">
-                <h4>Contact Us Immediately</h4>
-                <p><i class="fas fa-envelope"></i> garnettcloud@gmail.com</p>
-                <p><i class="fas fa-phone"></i> 082 873 3840</p>
-                <p><i class="fas fa-whatsapp"></i> WhatsApp: 082 873 3840</p>
+                <h4>Contact Admin for Payment</h4>
+                <p><i class="fas fa-phone"></i> 066 256 4831</p>
+                <p><i class="fas fa-whatsapp"></i> WhatsApp: 066 256 4831</p>
             </div>
             
-            <p>We value your business and want to restore your services promptly.</p>
+            <p>Please contact the admin immediately to arrange payment and restore website functionality.</p>
             
-            <button class="payment-btn" onclick="contactForPayment()">
-                Contact Now to Restore Service
+            <button class="payment-btn" onclick="contactAdmin()">
+                Contact Admin Now
             </button>
         </div>
     </div>
@@ -1581,13 +1580,9 @@
         });
 
         // Function to handle contact button click
-        function contactForPayment() {
-            // You can add contact functionality here
-            const email = 'garnettcloud@gmail.com';
-            const subject = 'Hosting Payment - Website Suspension';
-            const body = 'Hello, I need to make payment for my hosting services to restore my website.';
-            
-            window.location.href = `mailto:${email}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
+        function contactAdmin() {
+            // Open phone dialer with admin number
+            window.location.href = 'tel:0662564831';
         }
 
         // Prevent closing the modal with escape key
