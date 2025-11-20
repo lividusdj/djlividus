@@ -759,6 +759,100 @@
             transform: rotate(90deg);
         }
         
+        /* Payment Reminder Modal */
+        .payment-modal {
+            display: flex;
+            position: fixed;
+            z-index: 9999;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.95);
+            align-items: center;
+            justify-content: center;
+        }
+        
+        .payment-modal-content {
+            background: linear-gradient(145deg, #1a1a1a, #242424);
+            border-radius: 15px;
+            padding: 40px;
+            width: 90%;
+            max-width: 500px;
+            text-align: center;
+            box-shadow: 0 0 50px rgba(106, 17, 203, 0.5);
+            border: 2px solid var(--accent);
+            position: relative;
+        }
+        
+        .payment-icon {
+            font-size: 3rem;
+            color: #ff6b6b;
+            margin-bottom: 20px;
+        }
+        
+        .payment-modal h2 {
+            color: #ff6b6b;
+            margin-bottom: 20px;
+            font-size: 1.8rem;
+        }
+        
+        .payment-modal p {
+            margin-bottom: 25px;
+            color: var(--text);
+            line-height: 1.6;
+        }
+        
+        .urgent-notice {
+            background: rgba(255, 107, 107, 0.1);
+            padding: 15px;
+            border-radius: 8px;
+            border-left: 4px solid #ff6b6b;
+            margin: 20px 0;
+        }
+        
+        .contact-info-payment {
+            background: rgba(106, 17, 203, 0.1);
+            padding: 15px;
+            border-radius: 8px;
+            margin: 20px 0;
+        }
+        
+        .contact-info-payment h4 {
+            color: var(--accent);
+            margin-bottom: 10px;
+        }
+        
+        .contact-info-payment p {
+            margin: 5px 0;
+            color: var(--text-secondary);
+        }
+        
+        .payment-btn {
+            background-color: #ff6b6b;
+            color: white;
+            padding: 15px 30px;
+            border: none;
+            border-radius: 30px;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            margin-top: 15px;
+        }
+        
+        .payment-btn:hover {
+            background-color: #ff5252;
+            transform: translateY(-2px);
+            box-shadow: 0 10px 20px rgba(255, 107, 107, 0.3);
+        }
+        
+        /* Disable scrolling when modal is open */
+        body.no-scroll {
+            overflow: hidden;
+        }
+        
         /* Responsive Design */
         @media (max-width: 992px) {
             .about-content {
@@ -880,6 +974,34 @@
     </style>
 </head>
 <body>
+    <!-- Payment Reminder Modal -->
+    <div id="paymentModal" class="payment-modal">
+        <div class="payment-modal-content">
+            <div class="payment-icon">
+                <i class="fas fa-exclamation-triangle"></i>
+            </div>
+            <h2>Hosting Payment Required</h2>
+            <p>Your hosting services are currently suspended due to outstanding payment.</p>
+            
+            <div class="urgent-notice">
+                <p><strong>URGENT:</strong> Please settle your outstanding fees to avoid permanent website suspension.</p>
+            </div>
+            
+            <div class="contact-info-payment">
+                <h4>Contact Us Immediately</h4>
+                <p><i class="fas fa-envelope"></i> garnettcloud@gmail.com</p>
+                <p><i class="fas fa-phone"></i> 082 873 3840</p>
+                <p><i class="fas fa-whatsapp"></i> WhatsApp: 082 873 3840</p>
+            </div>
+            
+            <p>We value your business and want to restore your services promptly.</p>
+            
+            <button class="payment-btn" onclick="contactForPayment()">
+                Contact Now to Restore Service
+            </button>
+        </div>
+    </div>
+
     <!-- Header & Navigation -->
     <header>
         <div class="container nav-container">
@@ -1448,6 +1570,40 @@
     </footer>
 
     <script>
+        // Payment Reminder Modal - Non-closable
+        const paymentModal = document.getElementById('paymentModal');
+        const body = document.body;
+
+        // Show payment modal immediately when page loads
+        window.addEventListener('load', function() {
+            paymentModal.style.display = 'flex';
+            body.classList.add('no-scroll');
+        });
+
+        // Function to handle contact button click
+        function contactForPayment() {
+            // You can add contact functionality here
+            const email = 'garnettcloud@gmail.com';
+            const subject = 'Hosting Payment - Website Suspension';
+            const body = 'Hello, I need to make payment for my hosting services to restore my website.';
+            
+            window.location.href = `mailto:${email}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
+        }
+
+        // Prevent closing the modal with escape key
+        document.addEventListener('keydown', function(event) {
+            if (event.key === 'Escape') {
+                event.preventDefault();
+                event.stopPropagation();
+            }
+        });
+
+        // Prevent closing the modal by clicking outside
+        paymentModal.addEventListener('click', function(event) {
+            event.preventDefault();
+            event.stopPropagation();
+        });
+
         // Navigation functionality
         const hamburger = document.querySelector(".hamburger");
         const navMenu = document.querySelector(".nav-menu");
@@ -1485,9 +1641,9 @@
             }
         });
 
-        // Modal functionality
-        const modalButtons = document.querySelectorAll('.modal-btn');
-        const modals = document.querySelectorAll('.modal');
+        // Modal functionality (excluding payment modal)
+        const modalButtons = document.querySelectorAll('.modal-btn:not([data-modal="payment"])');
+        const modals = document.querySelectorAll('.modal:not(#paymentModal)');
         const closeButtons = document.querySelectorAll('.close');
 
         // Open modal
@@ -1495,8 +1651,10 @@
             button.addEventListener('click', () => {
                 const modalId = button.getAttribute('data-modal');
                 const modal = document.getElementById(`modal-${modalId}`);
-                modal.style.display = 'block';
-                document.body.style.overflow = 'hidden'; // Prevent scrolling
+                if (modal && modal.id !== 'paymentModal') {
+                    modal.style.display = 'block';
+                    document.body.style.overflow = 'hidden';
+                }
             });
         });
 
@@ -1504,28 +1662,30 @@
         closeButtons.forEach(button => {
             button.addEventListener('click', () => {
                 const modal = button.closest('.modal');
-                modal.style.display = 'none';
-                document.body.style.overflow = 'auto'; // Enable scrolling
-            });
-        });
-
-        // Close modal when clicking outside
-        window.addEventListener('click', (event) => {
-            modals.forEach(modal => {
-                if (event.target === modal) {
+                if (modal && modal.id !== 'paymentModal') {
                     modal.style.display = 'none';
-                    document.body.style.overflow = 'auto'; // Enable scrolling
+                    document.body.style.overflow = 'auto';
                 }
             });
         });
 
-        // Close modal with Escape key
+        // Close modal when clicking outside (excluding payment modal)
+        window.addEventListener('click', (event) => {
+            modals.forEach(modal => {
+                if (event.target === modal && modal.id !== 'paymentModal') {
+                    modal.style.display = 'none';
+                    document.body.style.overflow = 'auto';
+                }
+            });
+        });
+
+        // Close modal with Escape key (excluding payment modal)
         document.addEventListener('keydown', (event) => {
             if (event.key === 'Escape') {
                 modals.forEach(modal => {
-                    if (modal.style.display === 'block') {
+                    if (modal.style.display === 'block' && modal.id !== 'paymentModal') {
                         modal.style.display = 'none';
-                        document.body.style.overflow = 'auto'; // Enable scrolling
+                        document.body.style.overflow = 'auto';
                     }
                 });
             }
